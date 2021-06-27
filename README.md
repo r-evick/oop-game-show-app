@@ -1,4 +1,4 @@
-# techdegree-project-4
+# oop-game-show-app
  OOP Game Show App
 
 This app uses a random, hidden phrase, which a player tries to guess, by clicking letters on an onscreen keyboard.

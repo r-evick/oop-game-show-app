@@ -32,7 +32,7 @@ createPhrases() {
 * @return {Object} Phrase object chosen to be used 
 */ 
 
-getRandomPhrase() {
+getRandomPhrase() {  
     const randomPhraseFunction = Math.floor(Math.random() * this.phrases.length);
     const randomPhrase = this.phrases[randomPhraseFunction];
 

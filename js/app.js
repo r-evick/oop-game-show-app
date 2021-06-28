@@ -3,10 +3,12 @@
  * app.js */
 
   
-// const game = new Game(); 
-// game.getRandomPhrase().addPhraseToDisplay();
+let game;
+const startButton = document.getElementById('btn__reset');
 
-const game = new Game(); 
-game.startGame(); 
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+startButton.addEventListener('click', (e) => {
+    game = new Game();
+    game.startGame();
+});
+
 

@@ -25,8 +25,8 @@ addPhraseToDisplay() {
           ul.appendChild(li);
       } else {
           li.textContent = this.phrase[i];
-          li.classList.add('hide');  
-          li.classList.add('letter'); //add class 'letter' to CSS if letter
+          li.classList.add('hide');  //hides all letters
+          li.classList.add('letter');  //add class 'letter' to CSS if letter
           li.classList.add(this.phrase[i]);
           ul.appendChild(li); 
       }

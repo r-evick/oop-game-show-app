@@ -10,6 +10,7 @@ class Game {
         this.activePhrase = null;
     }
 
+
 /** 
 * Creates phrases for use in game 
 * @return {array} An array of phrases that could be used in the game 
@@ -27,6 +28,7 @@ createPhrases() {
     return phrase;
 };
 
+
 /** 
 * Selects random phrase from phrases property 
 * @return {Object} Phrase object chosen to be used 
@@ -39,6 +41,19 @@ getRandomPhrase() {
     return randomPhrase;
 };
 
+
+/** 
+* Begins game by selecting a random phrase and displaying it to user 
+*/ 
+
+
+startGame() {
+    const overlay = document.getElementById('overlay');
+    
+    overlay.style.display = 'none';  //hides start screen
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay(); 
+};
 
 
 };

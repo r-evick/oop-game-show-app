@@ -55,10 +55,28 @@ startGame() {
 };
 
 
-handleInteraction() {
+/**
+* Handles onscreen keyboard button clicks
+* @param (HTMLButtonElement) button - The clicked button element
+*/
 
+handleInteraction(button) {
+    const buttonText = button.textContent;
+    button.disabled = true;
+    
+    if (this.activePhrase.checkLetter(buttonText)) {
+        button.classList.add('chosen');
+        this.activePhrase.showMatchedLetter(buttonText);
 
-};
+        if (this.checkForWin()) {
+            this.gameOver(true);
+        }
+    } else {
+        button.classList.add('wrong');
+        this.removeLife();
+    }
+    
+    };
 
 /** 
 * Checks for winning move 
@@ -104,8 +122,7 @@ gameOver(gameWon) {
     } else {
         overlay.className = 'lose';
         message.textContent = `Sorry, you did not win. Better luck next time!`;
-    }    
-    
+    }        
 };
 
 

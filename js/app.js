@@ -19,3 +19,31 @@ document.addEventListener('click', (e) => {
 });
 
 
+/*
+Event listener to let players use their physical computer keyboard to enter guesses
+*/
+
+const keys = document.querySelectorAll('.key');
+
+    document.addEventListener('keydown', (e) => {
+        keys.forEach(key => {
+            if (key.textContent === e.key && !key === false) {
+                game.handleInteraction(key);
+            } 
+        });
+    });
+     
+
+/*
+Event listener to let players use the enter button to start the game
+*/
+
+document.addEventListener('keyup', (e) => {
+    if (e.key == 'Enter') {
+        game = new Game();
+        game.startGame();
+    };
+});
+
+
+

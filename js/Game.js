@@ -74,9 +74,9 @@ handleInteraction(button) {
     } else {
         button.classList.add('wrong');
         this.removeLife();
-    }
-    
-    };
+    }  
+};
+
 
 /** 
 * Checks for winning move 
@@ -119,11 +119,39 @@ gameOver(gameWon) {
     if  (gameWon) {
         overlay.className = 'win';
         message.textContent = `Congratulations, you won!`;
+        this.gameReset();
     } else {
         overlay.className = 'lose';
         message.textContent = `Sorry, you did not win. Better luck next time!`;
-    }        
+        this.gameReset();
+    }
 };
+
+
+//method used to reset game after win or loss
+gameReset() {
+    const buttons = document.querySelectorAll('.keyrow button');
+    const hearts = document.querySelectorAll('#scoreboard ol img');
+    const uls = document.querySelectorAll('#phrase ul');
+        
+        uls.forEach(ul => {
+            ul.innerHTML = '';
+        });
+        
+        buttons.forEach(button => {
+            button.disabled = false;
+            button.classList.add('key');
+            button.classList.remove('wrong');
+            button.classList.remove('chosen');
+        });
+
+        hearts.forEach(heart => {
+            heart.src = 'images/liveHeart.png'
+        });
+
+        this.missed = 0;        
+};
+
 
 
 

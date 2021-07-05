@@ -152,8 +152,4 @@ gameReset() {
         this.missed = 0;        
 };
 
-
-
-
-
 };

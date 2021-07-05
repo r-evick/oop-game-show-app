@@ -9,3 +9,10 @@ A player continues to select letters until they guess the phrase (and win), or m
 If the player completes the phrase before they run out of guesses, a winning screen appears. If the player guesses incorrectly five times, a losing screen appears.
 
 A player can guess a letter only once.
+
+Added functions:
+
+1. Users can use their physical keyboard instead of the on-screen keyboard to enter letters.
+2. The enter button can be used to start a game instead of clicking the 'Start Game' button.
+3. 
+

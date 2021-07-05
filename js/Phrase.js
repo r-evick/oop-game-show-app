@@ -40,7 +40,7 @@ addPhraseToDisplay() {
 */ 
 
 checkLetter(letter) {
-    if (this.phrase.includes(letter)) {  //includes() method used from https://www.w3schools.com/Jsref/jsref_includes.asp
+    if (this.phrase.includes(letter)) {  //the includes() method was used from https://www.w3schools.com/Jsref/jsref_includes.asp
         return true;
     } else {
         return false;
@@ -49,8 +49,10 @@ checkLetter(letter) {
 
 
 /** 
-* Displays passed letter on screen after a match is found * @param (string) letter - Letter to display 
-*/ 
+* Displays passed letter on screen after a match is found 
+* @param (string) letter - Letter to display 
+*/
+
 showMatchedLetter(letter) {
     const matchedLetter = document.getElementsByClassName(letter);
 
@@ -59,7 +61,5 @@ showMatchedLetter(letter) {
         matchedLetter[i].classList.add('show');
     }
 };
-
-
 
 };

@@ -3,6 +3,29 @@
  * Game.js */
 
 
+/*
+Creates button that will play and pause background music
+Portions of code used were found at https://jsfiddle.net/hibbard_eu/enoqwg5b/
+*/
+
+
+let audio = new Audio('audio/background_music.mp3');
+let button = document.getElementById('button');
+
+let musicButton = document.createElement('button');
+    musicButton.type = 'button';
+    musicButton.innerHTML = 'Click to Play/Pause Music';
+    document.body.appendChild(musicButton);
+
+musicButton.addEventListener("click", (e) => {
+  if(audio.paused){
+    audio.play();
+  } else {
+    audio.pause();
+  }
+});
+
+            
 class Game {
     constructor() {
         this.missed = 0;
@@ -48,6 +71,11 @@ getRandomPhrase() {
 
 startGame() {
     const overlay = document.getElementById('overlay');
+    const hearts = document.querySelectorAll('#scoreboard ol img');
+
+    hearts.forEach(heart => {  //replaces old hearts with animated gif 
+        heart.src = 'images/liveHeartAnimate.gif'
+    });
     
     overlay.style.display = 'none';  //hides start screen
     this.activePhrase = this.getRandomPhrase();
@@ -62,6 +90,7 @@ startGame() {
 
 handleInteraction(button) {
     const buttonText = button.textContent;
+
     button.disabled = true;
     
     if (this.activePhrase.checkLetter(buttonText)) {
@@ -86,7 +115,7 @@ handleInteraction(button) {
 checkForWin() {
     const hiddenLetters = document.querySelectorAll('.hide');
 
-    return hiddenLetters.length === 0;
+    return hiddenLetters.length === 0;  //when there no no hidden letters left the phrase is solved
 };
 
 
@@ -97,13 +126,26 @@ checkForWin() {
 */ 
 
 removeLife() {
-    const liveHeart = document.querySelectorAll('img');
+    let liveHeart = document.querySelectorAll('img');
     liveHeart[this.missed].src = 'images/lostHeart.png';
     this.missed++;
-
-    if (this.missed === 5) {
+  
+    //changes background color based off of how many misses
+    if (this.missed == 2) {
+        document.body.style.backgroundColor = '#FCFF9F';
+    };
+    
+    if (this.missed == 3) {
+        document.body.style.backgroundColor = '#FFD9B3';
+    };
+    
+    if (this.missed == 4) {
+        document.body.style.backgroundColor = '#FF8080';
+    };
+    
+    if (this.missed == 5) {
         this.gameOver(false);
-    }
+    };
 };
 
 
@@ -143,10 +185,11 @@ gameReset() {
             button.classList.add('key');
             button.classList.remove('wrong');
             button.classList.remove('chosen');
+            document.body.style.backgroundColor = 'white';
         });
 
         hearts.forEach(heart => {
-            heart.src = 'images/liveHeart.png'
+            heart.src = 'images/liveHeartAnimate.gif'
         });
 
         this.missed = 0;        

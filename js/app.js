@@ -6,6 +6,7 @@
 let game;
 const startButton = document.getElementById('btn__reset');
 
+//starts game when button is clicked
 startButton.addEventListener('click', (e) => {
     game = new Game();
     game.startGame();
@@ -36,13 +37,16 @@ document.addEventListener('keydown', (e) => {
 
 /*
 Event listener to let players use the enter button to start the game
+Disables enter button after initial press
 */
 
+function gameStarted () {  
+    return overlay.style.display === 'none';
+};
+
 document.addEventListener('keyup', (e) => {
-    if (e.key == 'Enter') {
+    if (e.key == 'Enter' && !gameStarted()) {
         game = new Game();
         game.startGame();
     };
 });
-
-
